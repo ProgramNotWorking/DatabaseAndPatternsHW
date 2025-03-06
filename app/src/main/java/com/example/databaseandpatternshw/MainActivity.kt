@@ -26,11 +26,7 @@ class MainActivity : AppCompatActivity() {
         val repository = BouquetRepository(db)
 
         lifecycleScope.launch {
-            repository.logBouquetInfo()
-
-            Log.d("TEST", "Flowers before purchase: ${db.flowerDao().getAllFlowers()}")
-            repository.purchaseBouquet(BouquetEntity(1, "Some random bouquet"))
-            Log.d("TEST", "Flowers after purchase: ${db.flowerDao().getAllFlowers()}")
+            Log.d("TEST", "All flowers: ${db.flowerDao().getAllFlowers()}")
         }
     }
 }
