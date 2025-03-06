@@ -11,10 +11,10 @@ interface BouquetFlowerDao {
     @Insert
     suspend fun insert(bouquetOfFlowers: BouquetOfFlowersEntity)
 
-    @Query("SELECT * FROM bouquet_flowers")
-    fun getAllBouquets(): List<BouquetOfFlowersEntity>
-
     @Query("SELECT * FROM bouquet_flowers WHERE bouquet_id = :bouquetId")
-    fun getFlowerForBouquet(bouquetId: Long): List<BouquetOfFlowersEntity>
+    suspend fun getFlowerForBouquet(bouquetId: Long): List<BouquetOfFlowersEntity>
+
+    @Query("DELETE FROM bouquet_flowers WHERE bouquet_id = :bouquetId")
+    suspend fun deleteFlowerForBouquet(bouquetId: Long)
 
 }

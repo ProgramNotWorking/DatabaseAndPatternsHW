@@ -6,7 +6,6 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.data.entities.BouquetEntity
 import com.example.data.entities.BouquetOfFlowersEntity
 import com.example.data.entities.FlowerEntity
-import com.example.data.entities.flower_type.FlowerType
 import com.example.data.storage.database.AppDatabase
 import kotlinx.coroutines.runBlocking
 import java.util.concurrent.Executor
@@ -27,21 +26,20 @@ class DatabaseCallback(private val context: Context) : RoomDatabase.Callback() {
 
                 val rose = FlowerEntity(1, "rose", 100)
                 val tulip = FlowerEntity(2, "tulip", 50)
+                val orchid = FlowerEntity(3, "orchid", 30)
                 flowerDao.insert(rose)
                 flowerDao.insert(tulip)
+                flowerDao.insert(orchid)
 
-                val bouquet = BouquetEntity(1)
-                bouquetDao.insert(bouquet)
+                val bouquet1 = BouquetEntity(1, "First bouquet")
+                val bouquet2 = BouquetEntity(2, "Second bouquet")
+                bouquetDao.insert(bouquet1)
+                bouquetDao.insert(bouquet2)
 
-                // Составление букета с 3-мя розами и 2-мя тюльпанами
-                val bouquetFlower1 = BouquetOfFlowersEntity(
-                    1, 1, "Spring mix", 3
-                )
-                val bouquetFlower2 = BouquetOfFlowersEntity(
-                    1, 2, "Spring mix",  2
-                )
-                bouquetFlowerDao.insert(bouquetFlower1)
-                bouquetFlowerDao.insert(bouquetFlower2)
+                bouquetFlowerDao.insert(BouquetOfFlowersEntity(1, 1, 3))
+                bouquetFlowerDao.insert(BouquetOfFlowersEntity(1, 2, 2))
+                bouquetFlowerDao.insert(BouquetOfFlowersEntity(2, 1, 5))
+                bouquetFlowerDao.insert(BouquetOfFlowersEntity(2, 3, 3))
             }
         }
     }

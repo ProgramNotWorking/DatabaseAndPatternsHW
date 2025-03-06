@@ -16,9 +16,9 @@ interface FlowerDao {
     suspend fun update(flowerEntity: FlowerEntity)
 
     @Query("SELECT * FROM flowers")
-    fun getAllFlowers(): List<FlowerEntity>
+    suspend fun getAllFlowers(): List<FlowerEntity>
 
     @Query("SELECT * FROM flowers WHERE id = :flowerId")
-    fun getFlowerById(flowerId: Long): FlowerEntity?
+    suspend fun getFlowerById(flowerId: Long): FlowerEntity?
 
 }

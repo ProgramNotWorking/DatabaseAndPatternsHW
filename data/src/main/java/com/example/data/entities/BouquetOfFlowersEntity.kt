@@ -17,13 +17,12 @@ import androidx.room.ForeignKey
             entity = FlowerEntity::class,
             parentColumns = ["id"],
             childColumns = ["flower_id"],
-            onDelete = ForeignKey.CASCADE
+            onDelete = ForeignKey.NO_ACTION
         )
     ]
 )
 data class BouquetOfFlowersEntity(
     val bouquet_id: Long,
     val flower_id: Long,
-    val name: String,
     val quantity: Int
 )

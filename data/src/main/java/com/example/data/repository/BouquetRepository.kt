@@ -1,37 +1,45 @@
 package com.example.data.repository
 
 import android.util.Log
+import com.example.data.entities.BouquetEntity
 import com.example.data.storage.database.AppDatabase
-import kotlinx.coroutines.runBlocking
-import java.util.concurrent.Executor
-import java.util.concurrent.Executors
 
 class BouquetRepository(private val db: AppDatabase) {
 
-    private val executor: Executor = Executors.newSingleThreadExecutor()
+    private val bouquetDao = db.bouquetDao()
+    private val bouquetFlowerDao = db.bouquetFlowerDao()
+    private val flowerDao = db.flowerDao()
 
-    fun logBouquetsInfo() {
-        val bouquetDao = db.bouquetDao()
-        val bouquetFlowerDao = db.bouquetFlowerDao()
-        val flowerDao = db.flowerDao()
+    suspend fun purchaseBouquet(bouquet: BouquetEntity) {
+        val bouquetFlowers = bouquetFlowerDao.getFlowerForBouquet(bouquet.id)
 
-        executor.execute {
-            runBlocking {
-                val bouquets = bouquetFlowerDao.getAllBouquets()
-                val flowers = flowerDao.getAllFlowers()
+        for (bouquetFlower in bouquetFlowers) {
+            val flower = flowerDao.getFlowerById(bouquetFlower.flower_id)
+            if (flower != null) {
+                flower.quantity -= bouquetFlower.quantity
+                flowerDao.update(flower)
+            }
+        }
 
-                for (bouquet in bouquets) {
-                    val flowersInfo = mutableMapOf(bouquet.name to "")
+        bouquetDao.delete(bouquet)
+        bouquetFlowerDao.deleteFlowerForBouquet(bouquet.id)
+    }
 
-                    for (flower in flowers) {
-                        if (flower.id == bouquet.flower_id) {
-                            flowersInfo[bouquet.name] += "${flower.name} - ${bouquet.quantity}, "
-                        }
-                    }
+    suspend fun logBouquetInfo() {
+        val bouquets = bouquetDao.getAllBouquets()
 
-                    Log.d("TEST", "${bouquet.name}: ${flowersInfo[bouquet.name]}")
+        for (bouquet in bouquets) {
+            val bouquetFlowers = bouquetFlowerDao.getFlowerForBouquet(bouquet.id)
+
+            val flowersInfo = StringBuilder()
+            for (bouquetFlower in bouquetFlowers) {
+                val flower = flowerDao.getFlowerById(bouquetFlower.flower_id)
+                if (flower != null) {
+                    flowersInfo.append("${flower.name} = ${flower.quantity} ")
                 }
             }
+
+            Log.d("TEST", "Bouquets: ${bouquet.name}, $flowersInfo")
         }
     }
 

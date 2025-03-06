@@ -5,5 +5,6 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "bouquets")
 data class BouquetEntity(
-    @PrimaryKey val id: Long
+    @PrimaryKey val id: Long,
+    val name: String
 )

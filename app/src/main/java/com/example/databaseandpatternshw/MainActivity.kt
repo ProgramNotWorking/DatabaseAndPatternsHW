@@ -1,9 +1,11 @@
 package com.example.databaseandpatternshw
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.room.Room
+import com.example.data.entities.BouquetEntity
 import com.example.data.repository.BouquetRepository
 import com.example.data.storage.database.AppDatabase
 import com.example.databaseandpatternshw.util.DatabaseCallback
@@ -24,7 +26,11 @@ class MainActivity : AppCompatActivity() {
         val repository = BouquetRepository(db)
 
         lifecycleScope.launch {
-            repository.logBouquetsInfo()
+            repository.logBouquetInfo()
+
+            Log.d("TEST", "Flowers before purchase: ${db.flowerDao().getAllFlowers()}")
+            repository.purchaseBouquet(BouquetEntity(1, "Some random bouquet"))
+            Log.d("TEST", "Flowers after purchase: ${db.flowerDao().getAllFlowers()}")
         }
     }
 }
