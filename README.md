@@ -2,6 +2,7 @@
 `app` модуль:
 * [MainActivity](https://github.com/ProgramNotWorking/DatabaseAndPatternsHW/blob/master/app/src/main/java/com/example/databaseandpatternshw/MainActivity.kt) - активность, в которой инициализируется база данных и осуществляется получение доступных цветов
 * [DatabaseCallback](https://github.com/ProgramNotWorking/DatabaseAndPatternsHW/blob/master/app/src/main/java/com/example/databaseandpatternshw/util/DatabaseCallback.kt) - callback, в котором создаются несколько букетов и цветов
+
 `data` модуль:
 * [BouquetEntity](https://github.com/ProgramNotWorking/DatabaseAndPatternsHW/blob/master/data/src/main/java/com/example/data/entities/BouquetEntity.kt) - сущность букета
 * [FlowerEntity](https://github.com/ProgramNotWorking/DatabaseAndPatternsHW/blob/master/data/src/main/java/com/example/data/entities/FlowerEntity.kt) - сущность цветка
