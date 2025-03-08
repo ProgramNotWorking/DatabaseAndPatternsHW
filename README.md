@@ -15,6 +15,20 @@
 
 ## Задача 2: Провести миграцию базы данных из 1-й задачи используя класс `Migration`, добавить к букету поле оформление, к цветам поле страны производителя
 
-## Задача 3: Реализовать `Interceptor`, который будет логировать код ответа сервера
+## Задача 3: Реализовать `Interceptor`, который будет логировать код ответа сервера (код лежит в `domain` модуле)
+* [ApiService](https://github.com/ProgramNotWorking/DatabaseAndPatternsHW/blob/master/domain/src/main/java/com/example/domain/task3/ApiService.kt) - интерфейс под запрос
+* [Post](https://github.com/ProgramNotWorking/DatabaseAndPatternsHW/blob/master/domain/src/main/java/com/example/domain/task3/Post.kt) - data класс под данные приходящие с сервера
+* [StatusCodeLoggingInterceptor](https://github.com/ProgramNotWorking/DatabaseAndPatternsHW/blob/master/domain/src/main/java/com/example/domain/task3/StatusCodeLoggingInterceptor.kt) - `Interceptor` для логирования кода ответа сервера
+* [LaunchTask](https://github.com/ProgramNotWorking/DatabaseAndPatternsHW/blob/master/domain/src/main/java/com/example/domain/task3/LaunchTask.kt) - файл с `main()` функцией
 
-## Задача 4: Реализовать паттерн `Builder` для класса `Car`. Так же написать реализацию `Abstract Factory` для данного класса
+## Задача 4: Реализовать паттерн `Builder` для класса `Car`. Так же написать реализацию `Abstract Factory` для данного класса (код лежит в `domain` модуле)
+* [Car](https://github.com/ProgramNotWorking/DatabaseAndPatternsHW/blob/master/domain/src/main/java/com/example/domain/task4/model/Car.kt) - data класс который мы 'собираем'
+* [CarBuilder](https://github.com/ProgramNotWorking/DatabaseAndPatternsHW/blob/master/domain/src/main/java/com/example/domain/task4/builder/CarBuilder.kt) - `Builder` класс для Car
+* [ICar](https://github.com/ProgramNotWorking/DatabaseAndPatternsHW/blob/master/domain/src/main/java/com/example/domain/task4/factory/ICar.kt) - основной интерфейс под фабрику
+* [SportCar](https://github.com/ProgramNotWorking/DatabaseAndPatternsHW/blob/master/domain/src/main/java/com/example/domain/task4/factory/SportCar.kt) - первая реализация основного интерфейса
+* [FamilyCar](https://github.com/ProgramNotWorking/DatabaseAndPatternsHW/blob/master/domain/src/main/java/com/example/domain/task4/factory/FamilyCar.kt) - вторая реализация основного интерфейса
+* [CarFactory](https://github.com/ProgramNotWorking/DatabaseAndPatternsHW/blob/master/domain/src/main/java/com/example/domain/task4/factory/CarFactory.kt) - интерфейс для классов фабрики
+* [SportCarFactory](https://github.com/ProgramNotWorking/DatabaseAndPatternsHW/blob/master/domain/src/main/java/com/example/domain/task4/factory/SportCarFactory.kt) - первый вариант фабрики
+* [FamilyCarFactory](https://github.com/ProgramNotWorking/DatabaseAndPatternsHW/blob/master/domain/src/main/java/com/example/domain/task4/factory/FamilyCarFactory.kt) - второй вариант фабрики
+* [LaunchTask](https://github.com/ProgramNotWorking/DatabaseAndPatternsHW/blob/master/domain/src/main/java/com/example/domain/task4/LaunchTask.kt) - файл с `main()` функцией
+
