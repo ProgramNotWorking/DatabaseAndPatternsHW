@@ -7,5 +7,6 @@ import androidx.room.PrimaryKey
 data class FlowerEntity(
     @PrimaryKey val id: Long,
     val name: String,
-    var quantity: Int
+    var quantity: Int,
+    val countryOfOrigin: String? = null
 )

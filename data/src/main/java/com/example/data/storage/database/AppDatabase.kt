@@ -17,7 +17,7 @@ import com.example.data.storage.dao.FlowerDao
         BouquetEntity::class,
         BouquetOfFlowersEntity::class
     ],
-    version = 1
+    version = 2
 )
 abstract class AppDatabase : RoomDatabase() {
 
