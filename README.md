@@ -13,7 +13,7 @@
 * [BouquetFlowerDao](https://github.com/ProgramNotWorking/DatabaseAndPatternsHW/blob/master/data/src/main/java/com/example/data/storage/dao/BouquetFlowerDao.kt) - связующее `DAO`
 * [AppDatabase](https://github.com/ProgramNotWorking/DatabaseAndPatternsHW/blob/master/data/src/main/java/com/example/data/storage/database/AppDatabase.kt) - база данных
 
-## Задача 2: Провести миграцию базы данных из 1-й задачи используя класс `Migration`, добавить к букету поле оформление, к цветам поле страны производителя
+## Задача 2: Провести миграцию базы данных из 1-й задачи используя класс `Migration`, добавить к букету поле оформление, к цветам поле страны производителя (Код к этой задаче лежит в ветке migration)
 * [BouquetEntity](https://github.com/ProgramNotWorking/DatabaseAndPatternsHW/blob/migration/data/src/main/java/com/example/data/entities/BouquetEntity.kt) - измененная сущность букета
 * [FlowerEntity](https://github.com/ProgramNotWorking/DatabaseAndPatternsHW/blob/migration/data/src/main/java/com/example/data/entities/FlowerEntity.kt) - измененная сущность цветка
 * [AppDatabase](https://github.com/ProgramNotWorking/DatabaseAndPatternsHW/blob/migration/data/src/main/java/com/example/data/storage/database/AppDatabase.kt) - база данных с новой версией
